@@ -25,7 +25,7 @@ public class Solution1_3 {
 
     public String solutionV2(String s) {
         String answer = "";
-
+        
         int maxVal = Integer.MIN_VALUE;
         int len, pos;
         while ((pos = s.indexOf(" ")) != -1) {
@@ -50,6 +50,7 @@ public class Solution1_3 {
         sc.close();
         
         Solution1_3 T = new Solution1_3();
+//        System.out.println(T.solution(s));
         System.out.println(T.solutionV2(s));
     }
 }
