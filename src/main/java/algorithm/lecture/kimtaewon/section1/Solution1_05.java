@@ -2,7 +2,7 @@ package algorithm.lecture.kimtaewon.section1;
 
 import java.util.*;
 
-public class Solution1_5 {
+public class Solution1_05 {
 
     public String solution(String str) {
         String answer = "";
@@ -58,7 +58,7 @@ public class Solution1_5 {
         String str = sc.next();
         sc.close();
 
-        Solution1_5 T = new Solution1_5();
+        Solution1_05 T = new Solution1_05();
         System.out.println(T.solution(str));
     }
 }

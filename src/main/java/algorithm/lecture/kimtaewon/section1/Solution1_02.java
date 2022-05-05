@@ -2,7 +2,7 @@ package algorithm.lecture.kimtaewon.section1;
 
 import java.util.*;
 
-public class Solution1_2 {
+public class Solution1_02 {
 /*
     //아스키 코드 이용
     public String solution(String str) {
@@ -39,7 +39,7 @@ public class Solution1_2 {
     }
 
     public static void main(String[] args) {
-        Solution1_2 T = new Solution1_2();
+        Solution1_02 T = new Solution1_02();
         
         Scanner sc = new Scanner(System.in);
         String str = sc.next();
