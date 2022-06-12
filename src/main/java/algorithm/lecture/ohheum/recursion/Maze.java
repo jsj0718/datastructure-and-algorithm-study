@@ -14,7 +14,7 @@ public class Maze {
     };
 
     private static final int PATHWAY_COLOR = 0;
-    private static final int WALL_COLOR = 1;
+    // private static final int WALL_COLOR = 1;
     private static final int BLOCKED_COLOR = 2;
     private static final int PATH_COLOR = 3;
 

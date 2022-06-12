@@ -13,7 +13,7 @@ public class CountingCell {
             {0, 1, 1, 0, 0, 1, 1, 1},
     };
 
-    private static final int BACKGROUND_PIXEL = 0;
+    // private static final int BACKGROUND_PIXEL = 0;
     private static final int IMAGE_PIXEL = 1;
     private static final int VISITED_PIXEL = 2;
     private static final int[][] DIRECTIONS = {

@@ -2,7 +2,7 @@ package algorithm.lecture.kimtaewon.section1;
 
 import java.util.*;
 
-public class Solution1_1 {
+public class Solution1_01 {
     public int solution(String str, char alpha) {
         int count = 0;
         str = str.toUpperCase();
@@ -17,7 +17,7 @@ public class Solution1_1 {
     }
     
     public static void main(String[] args) {
-        Solution1_1 T = new Solution1_1();
+        Solution1_01 T = new Solution1_01();
         
         Scanner sc = new Scanner(System.in);
         String str = sc.next();

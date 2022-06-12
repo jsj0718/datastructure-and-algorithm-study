@@ -2,7 +2,7 @@ package algorithm.lecture.kimtaewon.section1;
 
 import java.util.*;
 
-public class Solution1_4 {
+public class Solution1_04 {
 
     public List<String> solution(int N, String[] arr) {
         List<String> answer = new ArrayList<>();
@@ -66,7 +66,7 @@ public class Solution1_4 {
         }
         sc.close();
         
-        Solution1_4 T = new Solution1_4();
+        Solution1_04 T = new Solution1_04();
 //        for (String s : T.solution(N, arr)) {
         for (String s : T.solutionV2(N, arr)) {
 //        for (String s : T.solutionV3(N, arr)) {

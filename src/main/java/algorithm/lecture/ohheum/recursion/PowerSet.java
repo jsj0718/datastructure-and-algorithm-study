@@ -23,6 +23,7 @@ public class PowerSet {
         Scanner sc = new Scanner(System.in);
         N = sc.nextInt();
         M = sc.nextInt();
+        sc.close();
         visited = new boolean[N + 1];
         arr = new int[M];
 //        powerSetV2(0);
