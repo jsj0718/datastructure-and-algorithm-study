@@ -1,2 +1,3 @@
-rootProject.name = 'algorithm'
-
+rootProject.name = 'datastructure-and-algorithm-study'
+include 'data-structure'
+include 'algorithm'
