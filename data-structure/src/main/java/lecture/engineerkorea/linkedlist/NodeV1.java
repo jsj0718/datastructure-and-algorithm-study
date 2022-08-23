@@ -30,7 +30,7 @@ public class NodeV1 {
         }
     }
 
-    void retreive() {
+    void retrieve() {
         NodeV1 n = this;
         while(n.next != null) {
             System.out.print(n.data + " -> ");
