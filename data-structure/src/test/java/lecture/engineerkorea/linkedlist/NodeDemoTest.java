@@ -9,7 +9,7 @@ import java.io.PrintStream;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-class NodeV1Test {
+class NodeDemoTest {
 
     ByteArrayOutputStream outContent = new ByteArrayOutputStream();
     PrintStream printStream = System.out;
@@ -26,7 +26,7 @@ class NodeV1Test {
 
     @Test
     void testAppend() {
-        NodeV1 n = new NodeV1(1);
+        NodeDemo n = new NodeDemo(1);
         n.append(2);
         n.append(3);
         n.append(4);
@@ -37,7 +37,7 @@ class NodeV1Test {
 
     @Test
     void testDelete() {
-        NodeV1 n = new NodeV1(3);
+        NodeDemo n = new NodeDemo(3);
         n.append(5);
         n.append(7);
         n.append(9);

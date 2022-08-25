@@ -1,16 +1,16 @@
 package lecture.engineerkorea.linkedlist;
 
-public class NodeV1 {
+public class NodeDemo {
     int data;
-    NodeV1 next;
+    NodeDemo next;
 
-    NodeV1(int data) {
+    NodeDemo(int data) {
         this.data = data;
     }
 
     void append(int data) {
-        NodeV1 end = new NodeV1(data);
-        NodeV1 n = this;
+        NodeDemo end = new NodeDemo(data);
+        NodeDemo n = this;
 
         while(n.next != null) {
             n = n.next;
@@ -20,7 +20,7 @@ public class NodeV1 {
     }
 
     void delete(int data) {
-        NodeV1 n = this;
+        NodeDemo n = this;
         while(n.next != null) {
             if (n.next.data == data) {
                 n.next = n.next.next;
@@ -31,7 +31,7 @@ public class NodeV1 {
     }
 
     void retrieve() {
-        NodeV1 n = this;
+        NodeDemo n = this;
         while(n.next != null) {
             System.out.print(n.data + " -> ");
             n = n.next;
