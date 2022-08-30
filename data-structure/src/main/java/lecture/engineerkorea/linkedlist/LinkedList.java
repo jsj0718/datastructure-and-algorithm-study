@@ -42,6 +42,7 @@ public class LinkedList {
             return size;
         }
 
+        //교차점 구하기
         public static Node getIntersection(Node n1, Node n2) {
             int len1 = size(n1);
             int len2 = size(n2);
@@ -60,6 +61,111 @@ public class LinkedList {
                 n2 = n2.next;
             }
             return null;
+        }
+
+        //두 LinkedList 합
+        public static Node sumListsReverse(Node n1, Node n2, int carry) {
+            if (n1 == null && n2 == null && carry == 0) {
+                return null;
+            }
+
+            Node result = new Node();
+            int value = carry;
+
+            if (n1 != null) {
+                value += n1.data;
+            }
+
+            if (n2 != null) {
+                value += n2.data;
+            }
+
+            result.data = value % 10;
+
+            if (n1 != null || n2 != null) {
+                result.next = sumListsReverse(n1 != null ? n1.next : null, n2 != null ? n2.next : null, value / 10);
+            }
+
+            return result;
+        }
+
+        //두 LinkedList 합 (심화 문제)
+        static class Storage {
+            int carry = 0;
+            Node result = null;
+        }
+
+        public static Node sumLists(Node n1, Node n2) {
+            int len1 = size(n1);
+            int len2 = size(n2);
+
+            if (len1 > len2) {
+                n2 = LPadList(n2, len1 - len2);
+            } else if (len2 > len1) {
+                n1 = LPadList(n1, len2 - len1);
+            }
+
+            Storage storage = addLists(n1, n2);
+            if (storage.carry != 0) {
+                storage.result = insertBefore(storage.result, storage.carry);
+            }
+            return storage.result;
+        }
+
+        private static Storage addLists(Node n1, Node n2) {
+            if (n1 == null && n2 == null) {
+                return new Storage();
+            }
+
+            Storage storage = addLists(n1.next, n2.next);
+            int value = storage.carry + n1.data + n2.data;
+            int data = value % 10;
+            storage.result = insertBefore(storage.result, data);
+            storage.carry = value / 10;
+            return storage;
+        }
+
+        private static Node LPadList(Node node, int length) {
+            Node head = node;
+            for (int i = 0; i < length; i++) {
+                head = insertBefore(head, 0);
+            }
+            return head;
+        }
+
+        private static Node insertBefore(Node node, int data) {
+            Node before = new Node(data);
+            if (node != null) {
+                before.next = node;
+            }
+            return before;
+        }
+
+        //루프 존재 여부 및 시작점 구하기
+        public static Node findLoop(Node head) {
+            Node fast = head;
+            Node slow = head;
+
+            while (fast != null && fast.next != null) {
+                fast = fast.next.next;
+                slow = slow.next;
+
+                if (fast == slow) {
+                    slow = head;
+                    break;
+                }
+            }
+
+            if (fast == null || fast.next == null) {
+                return null;
+            }
+
+            while (fast != slow) {
+                fast = fast.next;
+                slow = slow.next;
+            }
+
+            return fast;
         }
     }
 

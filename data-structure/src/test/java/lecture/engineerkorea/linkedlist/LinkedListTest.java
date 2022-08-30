@@ -8,7 +8,7 @@ import org.junit.jupiter.api.Test;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 
-import static lecture.engineerkorea.linkedlist.LinkedList.Node.getIntersection;
+import static lecture.engineerkorea.linkedlist.LinkedList.Node.*;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -296,5 +296,88 @@ class LinkedListTest {
 
         Node intersection = getIntersection(n1, m1);
         assertThat(intersection).isNull();
+    }
+
+    @Test
+    void testSumReverse() {
+        //테스트 1
+        Node n1 = new Node(9);
+        Node n2 = n1.addNext(1);
+        Node n3 = n2.addNext(4);
+
+        Node m1 = new Node(6);
+        Node m2 = m1.addNext(4);
+        Node m3 = m2.addNext(3);
+
+        Node result1 = sumListsReverse(n1, m1, 0);
+        assertThat(result1.data).isEqualTo(5);
+        assertThat(result1.next.data).isEqualTo(6);
+        assertThat(result1.next.next.data).isEqualTo(7);
+        assertThat(result1.next.next.next).isNull();
+
+        //테스트 2
+        Node x1 = new Node(1);
+
+        Node y1 = new Node(9);
+
+        Node result2 = sumListsReverse(x1, y1, 0);
+        assertThat(result2.data).isEqualTo(0);
+        assertThat(result2.next.data).isEqualTo(1);
+
+        //테스트 3
+        Node l1 = new Node(1);
+
+        Node p1 = new Node (9);
+        Node p2 = p1.addNext(9);
+
+        Node result3 = sumListsReverse(l1, p1, 0);
+        assertThat(result3.data).isEqualTo(0);
+        assertThat(result3.next.data).isEqualTo(0);
+        assertThat(result3.next.next.data).isEqualTo(1);
+    }
+
+    @Test
+    void sumList() {
+        Node n1 = new Node(9);
+        Node n2 = n1.addNext(1);
+
+        Node m1 = new Node(1);
+        Node m2 = m1.addNext(1);
+
+        Node result1 = sumLists(n1, m1);
+        assertThat(result1.data).isEqualTo(1);
+        assertThat(result1.next.data).isEqualTo(0);
+        assertThat(result1.next.next.data).isEqualTo(2);
+        assertThat(result1.next.next.next).isNull();
+    }
+
+    @Test
+    void testFindLoop() {
+        //루프 존재 시
+        Node n1 = new Node(1);
+        Node n2 = n1.addNext(2);
+        Node n3 = n2.addNext(3);
+        Node n4 = n3.addNext(4);
+        Node n5 = n4.addNext(5);
+        Node n6 = n5.addNext(6);
+        Node n7 = n6.addNext(7);
+        Node n8 = n7.addNext(8);
+        n8.addNext(n3);
+
+        Node loopStartNode1 = findLoop(n1);
+        assertThat(loopStartNode1).isEqualTo(n3);
+
+        //루프 존재 안할 시
+        Node m1 = new Node(1);
+        Node m2 = m1.addNext(2);
+        Node m3 = m2.addNext(3);
+        Node m4 = m3.addNext(4);
+        Node m5 = m4.addNext(5);
+        Node m6 = m5.addNext(6);
+        Node m7 = m6.addNext(7);
+        Node m8 = m7.addNext(8);
+
+        Node loopStartNode2 = findLoop(m1);
+        assertThat(loopStartNode2).isNull();
     }
 }
