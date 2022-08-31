@@ -1,4 +1,4 @@
-package lecture.engineerkorea.stack;
+package lecture.engineerkorea.stackandqueue;
 
 import org.junit.jupiter.api.Test;
 

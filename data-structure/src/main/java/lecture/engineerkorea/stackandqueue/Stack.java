@@ -1,4 +1,4 @@
-package lecture.engineerkorea.stack;
+package lecture.engineerkorea.stackandqueue;
 
 import java.util.EmptyStackException;
 
@@ -36,5 +36,21 @@ public class Stack<T> {
 
     public boolean isEmpty() {
         return top == null;
+    }
+
+    public static void sort(Stack<Integer> s1) {
+        Stack<Integer> s2 = new Stack<>();
+
+        while(!s1.isEmpty()) {
+            Integer data = s1.pop();
+            while(!s2.isEmpty() && s2.peek() > data) {
+                s1.push(s2.pop());
+            }
+            s2.push(data);
+        }
+
+        while (!s2.isEmpty()) {
+            s1.push(s2.pop());
+        }
     }
 }
