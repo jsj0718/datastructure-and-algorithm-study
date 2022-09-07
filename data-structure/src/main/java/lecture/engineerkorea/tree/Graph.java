@@ -44,14 +44,14 @@ public class Graph {
         stack.push(root);
         root.marked = true;
         while (!stack.isEmpty()) {
-            Node node = stack.pop();
-            for (Node neighbor : node.adjacent) {
-                if (!neighbor.marked) {
-                    neighbor.marked = true;
-                    stack.push(neighbor);
+            Node target = stack.pop();
+            for (Node n : target.adjacent) {
+                if (!n.marked) {
+                    n.marked = true;
+                    stack.push(n);
                 }
             }
-            visit(node);
+            visit(target);
         }
     }
 
@@ -65,13 +65,13 @@ public class Graph {
         dfsRecursion(node);
     }
 
-    public void dfsRecursion(Node node) {
-        if (node == null) return;
-        node.marked = true;
-        visit(node);
-        for (Node neighbor : node.adjacent) {
-            if (!neighbor.marked) {
-                dfsRecursion(neighbor);
+    public void dfsRecursion(Node root) {
+        if (root == null) return;
+        root.marked = true;
+        visit(root);
+        for (Node n : root.adjacent) {
+            if (!n.marked) {
+                dfsRecursion(n);
             }
         }
     }
@@ -86,18 +86,52 @@ public class Graph {
         queue.add(root);
         root.marked = true;
         while (!queue.isEmpty()) {
-            Node node = queue.remove();
-            for (Node neighbor : node.adjacent) {
-                if (!neighbor.marked) {
-                    neighbor.marked = true;
-                    queue.add(neighbor);
+            Node target = queue.remove();
+            for (Node n : target.adjacent) {
+                if (!n.marked) {
+                    n.marked = true;
+                    queue.add(n);
                 }
             }
-            visit(node);
+            visit(target);
         }
     }
 
     private void visit(Node n) {
         System.out.print(n.data + " ");
+    }
+
+    /**
+     * 두 지점이 서로 찾아갈 수 있는 경로가 존재하는지 확인하는 메소드
+     */
+    public boolean search(int i1, int i2) {
+        return search(nodes[i1], nodes[i2]);
+    }
+
+    public boolean search(Node start, Node end) {
+        initMarks();
+        LinkedList<Node> queue = new LinkedList<>();
+        queue.add(start);
+        start.marked = true;
+
+        while(!queue.isEmpty()) {
+            Node root = queue.removeFirst();
+            if (root == end) {
+                return true;
+            }
+            for (Node n : root.adjacent) {
+                if (!n.marked) {
+                    n.marked = true;
+                    queue.add(n);
+                }
+            }
+        }
+        return false;
+    }
+
+    private void initMarks() {
+        for (Node node : nodes) {
+            node.marked = false;
+        }
     }
 }

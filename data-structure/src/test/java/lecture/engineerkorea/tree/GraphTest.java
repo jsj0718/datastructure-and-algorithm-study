@@ -84,6 +84,58 @@ class GraphTest {
         graph.bfs();
 
         assertThat(outContent.toString()).contains("0 1 2 3 4 5 6 7 8");
+    }
 
+    /*
+      0
+     /
+     1 ㅡㅡ 3   7
+     |  /   \ /
+     | /     5
+     2 ㅡㅡ 4   \
+                6 ㅡ 8
+     */
+    @Test
+    void graphSearch_true() {
+        Graph graph = new Graph(9);
+
+        graph.addEdge(0, 1);
+        graph.addEdge(1, 2);
+        graph.addEdge(1, 3);
+        graph.addEdge(2, 4);
+        graph.addEdge(2, 3);
+        graph.addEdge(3, 4);
+        graph.addEdge(3, 5);
+        graph.addEdge(5, 6);
+        graph.addEdge(5, 7);
+        graph.addEdge(6, 8);
+
+        assertTrue(graph.search(1, 8));
+    }
+
+    /*
+      0
+     /
+     1 ㅡㅡ 3   7
+     |  /     /
+     | /     5
+     2 ㅡㅡ 4   \
+                6 ㅡ 8
+     */
+    @Test
+    void graphSearch_false() {
+        Graph graph = new Graph(9);
+
+        graph.addEdge(0, 1);
+        graph.addEdge(1, 2);
+        graph.addEdge(1, 3);
+        graph.addEdge(2, 4);
+        graph.addEdge(2, 3);
+        graph.addEdge(3, 4);
+        graph.addEdge(5, 6);
+        graph.addEdge(5, 7);
+        graph.addEdge(6, 8);
+
+        assertFalse(graph.search(1, 8));
     }
 }
