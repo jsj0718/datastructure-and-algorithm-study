@@ -1,13 +1,12 @@
 package lecture.engineerkorea.tree;
 
 import lecture.engineerkorea.tree.Tree.Node;
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+import java.util.LinkedList;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
 
 class TreeTest {
 
@@ -69,5 +68,56 @@ class TreeTest {
         assertThat(result.get(2)).isEqualTo(2);
         assertThat(result.get(3)).isEqualTo(3);
         assertThat(result.get(4)).isEqualTo(1);
+    }
+
+    @Test
+    void testArrayToBinarySearchTree() {
+        //given
+        int[] a = new int[10];
+        for (int i = 0; i < 10; i++) {
+            a[i] = i;
+        }
+
+        Tree tree = new Tree();
+        tree.makeTree(a);
+
+        //when & then
+        tree.searchBinaryTree(tree.root, 2);
+    }
+
+    @Test
+    void testBSTtoListRecursive() {
+        //given
+        Tree tree = new Tree();
+        tree.makeTree(10);
+
+        //when
+        List<LinkedList<Node>> lists = tree.BSTtoListRecursive();
+
+        //then
+        assertThat(lists.get(0).size()).isEqualTo(1);
+        assertThat(lists.get(1).size()).isEqualTo(2);
+        assertThat(lists.get(2).size()).isEqualTo(4);
+        assertThat(lists.get(3).size()).isEqualTo(3);
+
+        tree.printList(lists);
+    }
+
+    @Test
+    void testBSTtoListBFS() {
+        //given
+        Tree tree = new Tree();
+        tree.makeTree(10);
+
+        //when
+        List<LinkedList<Node>> lists = tree.BSTtoListBFS();
+
+        //then
+        assertThat(lists.get(0).size()).isEqualTo(1);
+        assertThat(lists.get(1).size()).isEqualTo(2);
+        assertThat(lists.get(2).size()).isEqualTo(4);
+        assertThat(lists.get(3).size()).isEqualTo(3);
+
+        tree.printList(lists);
     }
 }
