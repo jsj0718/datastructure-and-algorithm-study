@@ -5,10 +5,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 
-import java.util.Arrays;
-import java.util.LinkedList;
-import java.util.Queue;
-import java.util.Stack;
+import java.util.*;
 import java.util.stream.Stream;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -98,6 +95,64 @@ public class Level0Test {
         return Stream.of(
                 Arguments.of(new int[][] {{0, 0, 0, 0, 0}, {0, 0, 0, 0, 0}, {0, 0, 0, 0, 0}, {0, 0, 1, 0, 0}, {0, 0, 0, 0, 0}}, 16),
                 Arguments.of(new int[][] {{0, 0, 0, 0, 0}, {0, 0, 0, 0, 0}, {0, 0, 0, 0, 0}, {0, 0, 1, 1, 0}, {0, 0, 0, 0, 0}}, 13)
+        );
+    }
+
+    @ParameterizedTest
+    @MethodSource(value = "겹치는_선분의_길이_데이터")
+    void 겹치는_선분의_길이(int[][] lines, int result) {
+        //when
+        Map<Integer, Integer> map = new HashMap<>();
+        for (int[] line : lines) {
+            for (int i = Math.min(line[0], line[1]); i < Math.max(line[0], line[1]); i++) {
+                map.put(i, map.getOrDefault(i, 0) + 1);
+            }
+        }
+
+        int[] line = map.entrySet().stream().filter(entry -> entry.getValue() > 1).map(entry -> entry.getKey()).sorted().mapToInt(Integer::intValue).toArray();
+
+        //then
+        assertThat(line.length).isEqualTo(result);
+    }
+
+    static Stream<Arguments> 겹치는_선분의_길이_데이터() {
+        return Stream.of(
+                Arguments.of(new int[][] {{0, 1}, {2, 5}, {3, 9}}, 2),
+                Arguments.of(new int[][] {{1, -1}, {1, 3}, {9, 3}}, 0),
+                Arguments.of(new int[][] {{0, 5}, {3, 9}, {1, 10}}, 8),
+                Arguments.of(new int[][] {{0, 10}, {1, 3}, {5, 8}}, 5)
+        );
+    }
+
+    @ParameterizedTest
+    @MethodSource(value = "등수_매기기_데이터")
+    void 등수_매기기(int[][] score, int[] result) {
+        //when
+        int[] answer = new int[score.length];
+
+        int[] sortedScore = Arrays.stream(score).map(ints -> ints[0] + ints[1]).sorted(Comparator.reverseOrder()).distinct().mapToInt(Integer::intValue).toArray();
+
+        int rank = 1;
+        for (int i = 0; i < sortedScore.length; i++) {
+            int cnt = 0;
+            for (int j = 0; j < score.length; j++) {
+                int total = score[j][0] + score[j][1];
+                if (total == sortedScore[i]) {
+                    answer[j] = rank;
+                    cnt++;
+                }
+            }
+            rank += cnt;
+        }
+
+        //then
+        assertThat(answer).contains(result);
+    }
+
+    static Stream<Arguments> 등수_매기기_데이터() {
+        return Stream.of(
+                Arguments.of(new int[][] {{80, 70}, {90, 50}, {40, 70}, {50, 80}}, new int[] {1, 2, 4, 3}),
+                Arguments.of(new int[][] {{80, 70}, {70, 80}, {30, 50}, {90, 100}, {100, 90}, {100, 100}, {10, 30}}, new int[] {4, 4, 6, 2, 2, 1, 7})
         );
     }
 }
