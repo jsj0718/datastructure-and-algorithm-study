@@ -13,4 +13,9 @@ class ArrayUtilTest {
 
         Assertions.assertThat(ArrayUtil.changeBracket(s)).isEqualTo("{{80, 70}, {90, 50}, {40, 70}, {50, 80}}");
     }
+
+    @Test
+    void transBracket() {
+
+    }
 }
