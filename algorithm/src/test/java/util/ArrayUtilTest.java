@@ -1,9 +1,8 @@
-package programmers.util;
+package util;
 
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
-
-import static org.junit.jupiter.api.Assertions.*;
+import util.ArrayUtil;
 
 class ArrayUtilTest {
 
@@ -16,6 +15,6 @@ class ArrayUtilTest {
 
     @Test
     void transBracket() {
-
+        System.out.println(ArrayUtil.changeBracket("[[1,3],[2,3],[3,4],[4,5],[4,6],[4,7],[7,8],[7,9]]"));
     }
 }

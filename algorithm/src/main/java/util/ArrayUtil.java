@@ -1,4 +1,4 @@
-package programmers.util;
+package util;
 
 public class ArrayUtil {
 

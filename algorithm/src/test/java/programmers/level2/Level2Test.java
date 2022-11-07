@@ -615,4 +615,230 @@ public class Level2Test {
                 Arguments.of("ABABABABABABABAB", new int[]{1, 2, 27, 29, 28, 31, 30})
         );
     }
+
+    int 피로도_answer = 0;
+    boolean[] 피로도_visited;
+
+    @ParameterizedTest
+    @MethodSource(value = "피로도_데이터")
+    void 피로도(int k, int[][] dungeons, int result) {
+        //when
+        피로도_visited = new boolean[dungeons.length];
+        피로도_dfs(dungeons, k, 0);
+        //then
+        assertThat(피로도_answer).isEqualTo(result);
+    }
+
+    void 피로도_dfs(int[][] dungeons, int k, int depth) {
+        for (int i = 0; i < dungeons.length; i++) {
+            if (!피로도_visited[i] && k >= dungeons[i][0]) {
+                피로도_visited[i] = true;
+                피로도_dfs(dungeons, k - dungeons[i][1], depth + 1);
+                피로도_visited[i] = false;
+            }
+        }
+        피로도_answer = Math.max(피로도_answer, depth);
+    }
+
+    static Stream<Arguments> 피로도_데이터() {
+        return Stream.of(
+                Arguments.of(80, new int[][] {{80, 20}, {50, 40}, {30, 10}}, 3),
+                Arguments.of(40, new int[][] {{40, 20}, {10, 10}, {10, 10}, {10, 10}, {10, 10}}, 4)
+        );
+    }
+
+    @ParameterizedTest
+    @MethodSource(value = "두개_이하로_다른_비트_데이터")
+    void 두개_이하로_다른_베트(int[] numbers, int[] result) {
+        //when
+        int[] answer = new int[numbers.length];
+
+        for (int i = 0; i < numbers.length; i++) {
+            int origin = numbers[i];
+            int n = origin;
+            while (true) {
+                int diffBitCount = getDiffBitCount(origin, ++n);
+                if (diffBitCount <= 2) break;
+            }
+            answer[i] = n;
+        }
+
+        //then
+        System.out.println(Arrays.toString(answer));
+    }
+
+    int getDiffBitCount(int num1, int num2) {
+        String s1 = Integer.toBinaryString(num1);
+        String s2 = Integer.toBinaryString(num2);
+        int diffLength = Math.abs(s1.length() - s2.length());
+
+        if (s1.length() > s2.length()) {
+            s2 = "0".repeat(diffLength) + s2;
+        } else if (s2.length() > s1.length()) {
+            s1 = "0".repeat(diffLength) + s1;
+        }
+
+        int count = 0;
+        for (int i = 0; i < s1.length(); i++) {
+            if (s1.charAt(i) != s2.charAt(i)) count++;
+        }
+        return count;
+    }
+
+    static Stream<Arguments> 두개_이하로_다른_비트_데이터() {
+        return Stream.of(
+                Arguments.of(new int[] {2, 7}, new int[] {3, 11})
+        );
+    }
+
+    int[] answer;
+    int count = 0;
+
+    @Test
+    void unitTest() {
+        //given
+        int n = 3;
+        long k = 5;
+
+        //when
+        int[] numbers = IntStream.rangeClosed(1, n).toArray();
+        boolean[] visited = new boolean[numbers.length];
+
+        permutation(numbers, visited, k, 0);
+
+        System.out.println("answer: " + Arrays.toString(answer));
+    }
+
+    void permutation(int[] numbers, boolean visited[], long k, int depth) {
+        if (depth == numbers.length) {
+            if (++count == k) {
+                answer = Arrays.copyOf(numbers, numbers.length);
+            }
+            return;
+        }
+
+        for (int i=0; i<numbers.length; i++) {
+            if (visited[i]) continue;
+            visited[i] = true;
+            numbers[depth] = i + 1;
+            permutation(numbers, visited, k, depth + 1);
+            numbers[depth] = 0;
+            visited[i] = false;
+        }
+    }
+
+
+    @ParameterizedTest
+    @MethodSource(value = "전력망을_둘로_나누기_데이터")
+    void 전력망을_둘로_나누기(int n, int[][] wires, int result) {
+        //when
+        int answer = Integer.MAX_VALUE;
+
+        for (int i = 0; i < wires.length; i++) {
+            answer = Math.min(answer, 전력망_bfs(wires, new boolean[n + 1], n, i));
+        }
+
+        //then
+        assertThat(answer == Integer.MAX_VALUE ? 0 : answer).isEqualTo(result);
+    }
+
+    int 전력망_bfs(int[][] wires, boolean[] visited, int n, int idx) {
+        visited[1] = true;
+
+        Queue<Integer> queue = new LinkedList<>();
+        for (int i = 0; i < wires.length; i++) {
+            if (i == idx) continue;
+            int[] wire = wires[i];
+            if (wire[0] == 1) queue.add(wire[1]);
+            if (wire[1] == 1) queue.add(wire[0]);
+        }
+
+        while (!queue.isEmpty()) {
+            Integer node = queue.poll();
+            visited[node] = true;
+
+            for (int i = 0; i < wires.length; i++) {
+                if (i == idx) continue;
+
+                int[] wire = wires[i];
+                if (wire[0] == node && !visited[wire[1]]) queue.add(wire[1]);
+                if (wire[1] == node && !visited[wire[0]]) queue.add(wire[0]);
+            }
+        }
+
+        int cnt = 0;
+        for (boolean v : visited) {
+            if (v) cnt++;
+        }
+
+        return Math.abs(n - 2 * cnt);
+    }
+
+    static Stream<Arguments> 전력망을_둘로_나누기_데이터() {
+        return Stream.of(
+                Arguments.of(9, new int[][] {{1,3},{2,3},{3,4},{4,5},{4,6},{4,7},{7,8},{7,9}}, 3),
+                Arguments.of(4, new int[][] {{1,2},{2,3},{3,4}}, 0),
+                Arguments.of(7, new int[][] {{1,2},{2,7},{3,7},{3,4},{4,5},{6,7}}, 1)
+        );
+    }
+
+    @ParameterizedTest
+    @MethodSource(value = "줄_서는_방법_데이터")
+    void 줄_서는_방법(int n, long k, int[] result) {
+        //when
+        int[] answer = new int[n];
+
+        List<Integer> numbers = IntStream.rangeClosed(1, n).mapToObj(Integer::valueOf).collect(toList());
+        
+        dfs(answer, numbers, n, k - 1, 0);
+        
+        //then
+        assertThat(answer).isEqualTo(result);
+    }
+    void dfs(int[] answer, List<Integer> numbers, int n, long k, int depth) {
+        if (depth == answer.length) return;
+
+        int idx = (int) (k / factorial(n - 1));
+        answer[depth] = numbers.remove(idx);
+        dfs(answer, numbers, n - 1, k % factorial(n - 1), depth + 1);
+    }
+
+    int factorial(int n) {
+        if (n < 2) return 1;
+        return n * factorial(n - 1);
+    }
+
+    @ParameterizedTest
+    @MethodSource(value = "줄_서는_방법_데이터")
+    void 줄_서는_방법V2(int n, long k, int[] result) {
+        //when
+        int[] answer = new int[n];
+
+        List<Integer> numbers = IntStream.rangeClosed(1, n).mapToObj(Integer::valueOf).collect(Collectors.toList());
+
+        long factorial = factorialV2(n);
+
+        k--;
+        int idx = 0;
+        while (idx < n) {
+            factorial /= (n - idx);
+            answer[idx++] = numbers.remove((int) (k / factorial));
+            k %= factorial;
+        }
+
+        //then
+        assertThat(answer).isEqualTo(result);
+    }
+
+    long factorialV2(int n) {
+        if (n < 2) return 1;
+        return n * factorialV2(n - 1);
+    }
+
+    static Stream<Arguments> 줄_서는_방법_데이터() {
+        return Stream.of(
+                Arguments.of(3, 5, new int[]{3, 1, 2}),
+                Arguments.of(4, 15, new int[]{3, 2, 1, 4})
+        );
+    }
 }
