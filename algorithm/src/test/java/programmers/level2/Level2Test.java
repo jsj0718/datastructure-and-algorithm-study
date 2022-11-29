@@ -347,7 +347,7 @@ public class Level2Test {
                 Arguments.of(100, 100, new int[]{10, 10, 10, 10, 10, 10, 10, 10, 10, 10}, 110)
         );
     }
-    
+
     @ParameterizedTest
     @MethodSource(value = "뉴스_클러스터링_데이터")
     @DisplayName("뉴스 클러스터링 - 자카드 유사도 활용")
@@ -390,7 +390,7 @@ public class Level2Test {
                 Arguments.of("E=M*C^2", "e=m*c^2", 65536)
         );
     }
-    
+
     @ParameterizedTest
     @MethodSource(value = "n제곱_배열_자르기_데이터")
     @DisplayName("n제곱_배열_자르기_V1 - 2차원 배열 생성하여 풀이 시도했지만 메모리 초과")
@@ -412,7 +412,7 @@ public class Level2Test {
 
         System.out.println(Arrays.toString(flatArr));
 
-        int[] answer = Arrays.copyOfRange(flatArr, left, right+1);
+        int[] answer = Arrays.copyOfRange(flatArr, left, right + 1);
 
         //then
         assertThat(answer).isEqualTo(result);
@@ -452,11 +452,11 @@ public class Level2Test {
 
     static Stream<Arguments> n제곱_배열_자르기_데이터() {
         return Stream.of(
-                Arguments.of(3, 2, 5, new int[] {3, 2, 2, 3}),
-                Arguments.of(4, 7, 14, new int[] {4, 3, 3, 3, 4, 4, 4, 4})
+                Arguments.of(3, 2, 5, new int[]{3, 2, 2, 3}),
+                Arguments.of(4, 7, 14, new int[]{4, 3, 3, 3, 4, 4, 4, 4})
         );
     }
-    
+
     @ParameterizedTest
     @MethodSource(value = "주차_요금_계산_데이터")
     void 주차_요금_계산(int[] fees, String[] records, int[] result) {
@@ -541,9 +541,9 @@ public class Level2Test {
 
     static Stream<Arguments> 주차_요금_계산_데이터() {
         return Stream.of(
-                Arguments.of(new int[] {180, 5000, 10, 600}, new String[] {"05:34 5961 IN", "06:00 0000 IN", "06:34 0000 OUT", "07:59 5961 OUT", "07:59 0148 IN", "18:59 0000 IN", "19:09 0148 OUT", "22:59 5961 IN", "23:00 5961 OUT"}, new int[] {14600, 34400, 5000}),
-                Arguments.of(new int[] {120, 0, 60, 591}, new String[] {"16:00 3961 IN","16:00 0202 IN","18:00 3961 OUT","18:00 0202 OUT","23:58 3961 IN"}, new int[] {0, 591}),
-                Arguments.of(new int[] {1, 461, 1, 10}, new String[] {"00:00 1234 IN"}, new int[] {14841})
+                Arguments.of(new int[]{180, 5000, 10, 600}, new String[]{"05:34 5961 IN", "06:00 0000 IN", "06:34 0000 OUT", "07:59 5961 OUT", "07:59 0148 IN", "18:59 0000 IN", "19:09 0148 OUT", "22:59 5961 IN", "23:00 5961 OUT"}, new int[]{14600, 34400, 5000}),
+                Arguments.of(new int[]{120, 0, 60, 591}, new String[]{"16:00 3961 IN", "16:00 0202 IN", "18:00 3961 OUT", "18:00 0202 OUT", "23:58 3961 IN"}, new int[]{0, 591}),
+                Arguments.of(new int[]{1, 461, 1, 10}, new String[]{"00:00 1234 IN"}, new int[]{14841})
         );
     }
 
@@ -553,7 +553,7 @@ public class Level2Test {
         //when
         List<String[]> logs = new ArrayList<>();
         HashMap<String, String> userIdAndNicknameMap = new HashMap<>();
-        
+
         for (String log : record) {
             String[] data = log.split(" ");
             String status = data[0];
@@ -581,7 +581,7 @@ public class Level2Test {
 
     static Stream<Arguments> 오픈채팅방_데이터() {
         return Stream.of(
-                Arguments.of(new String[] {"Enter uid1234 Muzi", "Enter uid4567 Prodo","Leave uid1234","Enter uid1234 Prodo","Change uid4567 Ryan"}, new String[] {"Prodo님이 들어왔습니다.", "Ryan님이 들어왔습니다.", "Prodo님이 나갔습니다.", "Prodo님이 들어왔습니다."})
+                Arguments.of(new String[]{"Enter uid1234 Muzi", "Enter uid4567 Prodo", "Leave uid1234", "Enter uid1234 Prodo", "Change uid4567 Ryan"}, new String[]{"Prodo님이 들어왔습니다.", "Ryan님이 들어왔습니다.", "Prodo님이 나갔습니다.", "Prodo님이 들어왔습니다."})
         );
     }
 
@@ -642,8 +642,8 @@ public class Level2Test {
 
     static Stream<Arguments> 피로도_데이터() {
         return Stream.of(
-                Arguments.of(80, new int[][] {{80, 20}, {50, 40}, {30, 10}}, 3),
-                Arguments.of(40, new int[][] {{40, 20}, {10, 10}, {10, 10}, {10, 10}, {10, 10}}, 4)
+                Arguments.of(80, new int[][]{{80, 20}, {50, 40}, {30, 10}}, 3),
+                Arguments.of(40, new int[][]{{40, 20}, {10, 10}, {10, 10}, {10, 10}, {10, 10}}, 4)
         );
     }
 
@@ -687,7 +687,7 @@ public class Level2Test {
 
     static Stream<Arguments> 두개_이하로_다른_비트_데이터() {
         return Stream.of(
-                Arguments.of(new int[] {2, 7}, new int[] {3, 11})
+                Arguments.of(new int[]{2, 7}, new int[]{3, 11})
         );
     }
 
@@ -717,7 +717,7 @@ public class Level2Test {
             return;
         }
 
-        for (int i=0; i<numbers.length; i++) {
+        for (int i = 0; i < numbers.length; i++) {
             if (visited[i]) continue;
             visited[i] = true;
             numbers[depth] = i + 1;
@@ -776,9 +776,9 @@ public class Level2Test {
 
     static Stream<Arguments> 전력망을_둘로_나누기_데이터() {
         return Stream.of(
-                Arguments.of(9, new int[][] {{1,3},{2,3},{3,4},{4,5},{4,6},{4,7},{7,8},{7,9}}, 3),
-                Arguments.of(4, new int[][] {{1,2},{2,3},{3,4}}, 0),
-                Arguments.of(7, new int[][] {{1,2},{2,7},{3,7},{3,4},{4,5},{6,7}}, 1)
+                Arguments.of(9, new int[][]{{1, 3}, {2, 3}, {3, 4}, {4, 5}, {4, 6}, {4, 7}, {7, 8}, {7, 9}}, 3),
+                Arguments.of(4, new int[][]{{1, 2}, {2, 3}, {3, 4}}, 0),
+                Arguments.of(7, new int[][]{{1, 2}, {2, 7}, {3, 7}, {3, 4}, {4, 5}, {6, 7}}, 1)
         );
     }
 
@@ -789,12 +789,13 @@ public class Level2Test {
         int[] answer = new int[n];
 
         List<Integer> numbers = IntStream.rangeClosed(1, n).mapToObj(Integer::valueOf).collect(toList());
-        
+
         dfs(answer, numbers, n, k - 1, 0);
-        
+
         //then
         assertThat(answer).isEqualTo(result);
     }
+
     void dfs(int[] answer, List<Integer> numbers, int n, long k, int depth) {
         if (depth == answer.length) return;
 
@@ -841,4 +842,354 @@ public class Level2Test {
                 Arguments.of(4, 15, new int[]{3, 2, 1, 4})
         );
     }
+
+    @ParameterizedTest
+    @MethodSource(value = "삼각달팽이_데이터")
+    void 삼각달팽이(int n, int[] result) {
+        //when
+        List<int[]> list = new ArrayList<>();
+
+        IntStream.rangeClosed(1, n).forEach(i -> list.add(new int[i]));
+
+        int row = -1;
+        int col = 0;
+        int currNum = 0;
+
+        for (int i=n; i>0; i-=3) {
+            for (int j=0; j<i; j++) list.get(++row)[col] = ++currNum;
+            for (int j=0; j<i-1; j++) list.get(row)[++col] = ++currNum;
+            for (int j=0; j<i-2; j++) list.get(--row)[--col] = ++currNum;
+        }
+
+        int[] answer = list.stream().flatMapToInt(numbers -> Arrays.stream(numbers)).toArray();
+
+        //then
+        assertThat(answer).isEqualTo(result);
+    }
+
+    static Stream<Arguments> 삼각달팽이_데이터() {
+        return Stream.of(
+                Arguments.of(4, new int[]{1, 2, 9, 3, 10, 8, 4, 5, 6, 7}),
+                Arguments.of(5, new int[]{1, 2, 12, 3, 13, 11, 4, 14, 15, 10, 5, 6, 7, 8, 9}),
+                Arguments.of(6, new int[]{1, 2, 15, 3, 16, 14, 4, 17, 21, 13, 5, 18, 19, 20, 12, 6, 7, 8, 9, 10, 11})
+        );
+    }
+
+    @ParameterizedTest
+    @MethodSource(value = "두_큐_합_같게_만들기_데이터")
+    void 두_큐_합_같게_만들기(int[] queue1, int[] queue2, int result) {
+        //when
+        Queue<Integer> leftQueue = new LinkedList<>();
+        Queue<Integer> rightQueue = new LinkedList<>();
+
+        long leftSum = 0;
+        long rightSum = 0;
+        for (int i = 0; i < queue1.length; i++) {
+            leftSum += queue1[i];
+            leftQueue.add(queue1[i]);
+            rightSum += queue2[i];
+            rightQueue.add(queue2[i]);
+        }
+
+        int answer = -1;
+        while (answer++ <= 3 * (queue1.length - 1)) {
+            if (leftSum == rightSum) break;
+            else if (leftSum > rightSum) {
+                rightSum += leftQueue.peek();
+                leftSum -= leftQueue.peek();
+                rightQueue.add(leftQueue.poll());
+            } else if (leftSum < rightSum) {
+                leftSum += rightQueue.peek();
+                rightSum -= rightQueue.peek();
+                leftQueue.add(rightQueue.poll());
+            }
+        }
+
+        answer = (answer > 3 * (queue1.length - 1)) ? -1 : answer;
+
+        //then
+        assertThat(answer).isEqualTo(result);
+    }
+
+    static Stream<Arguments> 두_큐_합_같게_만들기_데이터() {
+        return Stream.of(
+                Arguments.of(new int[] {3, 2, 7, 2}, new int[] {4, 6, 5, 1}, 2),
+                Arguments.of(new int[] {1, 2, 1, 2}, new int[] {1, 10, 1, 2}, 7),
+                Arguments.of(new int[] {1, 2, 1, 2}, new int[] {1, 1, 10, 2}, 9),
+                Arguments.of(new int[] {1, 1}, new int[] {1, 5}, -1)
+        );
+    }
+
+    @ParameterizedTest
+    @MethodSource(value = "혼자_놀기의_달인_데이터")
+    void 혼자_놀기의_달인(int[] cards, int result) {
+        //when
+        boolean[] visited = new boolean[cards.length];
+        int first = 0;
+        int second = 0;
+
+        for (int i = 0; i < cards.length; i++) {
+            int count = dfs(cards, visited, i);
+            if (count > first) first = count;
+            else if (count > second) second = count;
+        }
+
+        //then
+        assertThat(first * second).isEqualTo(result);
+    }
+
+    int dfs(int[] cards, boolean[] visited, int idx) {
+        if (visited[idx]) return 0;
+
+        Stack<Integer> stack = new Stack<>();
+        stack.push(cards[idx]);
+        visited[idx] = true;
+        int count = 1;
+
+        while (!stack.isEmpty()) {
+            int nextIdx = stack.pop() - 1;
+            if (visited[nextIdx]) continue;
+            visited[nextIdx] = true;
+            stack.push(cards[nextIdx]);
+            count++;
+        }
+
+        return count;
+    }
+
+    static Stream<Arguments> 혼자_놀기의_달인_데이터() {
+        return Stream.of(
+                Arguments.of(new int[] {8, 6, 3, 7, 2, 5, 1, 4}, 12)
+        );
+    }
+
+    @ParameterizedTest
+    @MethodSource(value = "방금그곡_데이터")
+    void 방금그곡(String m, String[] musicinfos, String result) {
+        //when
+        String answer = "(None)";
+
+        m = replaceSharpToLowerCase(m);
+
+        Map<String, String> map = new HashMap<>();
+        for (int i = 0; i < musicinfos.length; i++) {
+            String[] musicinfo = musicinfos[i].split(",");
+            String startTime = musicinfo[0];
+            String endTime = musicinfo[1];
+            String title = musicinfo[2];
+            String score = musicinfo[3];
+
+            score = replaceSharpToLowerCase(score);
+            String originScore = "";
+            int musicTime = getMusicTime(startTime, endTime);
+            if (score.length() > musicTime) originScore = score.substring(0, musicTime);
+            else if (score.length() < musicTime) {
+                originScore = score.repeat(musicTime / score.length()) + score.substring(0, musicTime % score.length());
+            }
+
+            System.out.println("originScore = " + originScore);
+
+            map.put(title, originScore);
+        }
+
+        System.out.println(map);
+
+        int max = 0;
+        for (int i = 0; i < musicinfos.length; i++) {
+            String key = musicinfos[i].split(",")[2];
+            String score = map.get(key);
+            if (score.length() > max && score.contains(m) && !score.contains(m + "#")) {
+                max = score.length();
+                answer = key;
+            }
+        }
+
+        //then
+        assertThat(answer).isEqualTo(result);
+    }
+
+    public String replaceSharpToLowerCase(String melody) {
+        return melody.replaceAll("C#", "c").replaceAll("D#", "d").replaceAll("F#", "f")
+                .replaceAll("G#", "g").replaceAll("A#", "a");
+    }
+
+    public int getMusicTime(String startTime, String endTime) {
+        String[] startTimeSplit = startTime.split(":");
+        String[] endTimeSplit = endTime.split(":");
+
+        return (Integer.parseInt(endTimeSplit[0]) - Integer.parseInt(startTimeSplit[0])) * 60
+                + (Integer.parseInt(endTimeSplit[1]) - Integer.parseInt(startTimeSplit[1]));
+    }
+
+    static Stream<Arguments> 방금그곡_데이터() {
+        return Stream.of(
+                Arguments.of("ABCDEFG", new String[] {"12:00,12:14,HELLO,CDEFGAB", "13:00,13:05,WORLD,ABCDEF"}, "HELLO"),
+                Arguments.of("CC#BCC#BCC#BCC#B", new String[] {"03:00,03:30,FOO,CC#B", "04:00,04:08,BAR,CC#BCC#BCC#B"}, "FOO"),
+                Arguments.of("ABC", new String[] {"12:00,12:14,HELLO,C#DEFGAB", "13:00,13:05,WORLD,ABCDEF"}, "WORLD")
+        );
+    }
+
+    @ParameterizedTest
+    @MethodSource(value = "택배상자_데이터")
+    void 택배상자(int[] order, int result) {
+        //when
+        int answer = 0;
+
+        Queue<Integer> q = new LinkedList<>();
+        Stack<Integer> s = new Stack<>();
+
+        IntStream.rangeClosed(1, order.length).forEach(i -> q.add(i));
+
+        while (!q.isEmpty()) {
+            if (!q.isEmpty() && q.peek() == order[answer]) {
+                q.poll();
+                answer++;
+            } else if (!s.isEmpty() && s.peek() == order[answer]) {
+                s.pop();
+                answer++;
+            } else {
+                s.push(q.poll());
+            }
+        }
+
+        while (!s.isEmpty()) {
+            if (s.peek() == order[answer]) {
+                s.pop();
+                answer++;
+            } else {
+                break;
+            }
+        }
+
+        System.out.println("answer = " + answer);
+
+        //then
+        assertThat(answer).isEqualTo(result);
+    }
+
+    static Stream<Arguments> 택배상자_데이터() {
+        return Stream.of(
+                Arguments.of(new int[] {4, 3, 1, 2, 5}, 2),
+                Arguments.of(new int[] {5, 4, 3, 2, 1}, 5)
+        );
+    }
+    
+    @ParameterizedTest
+    @MethodSource(value = "롤케이크_자르기_데이터")
+    void 롤케이크_자르기(int[] topping, int result) {
+        //when
+        int answer = 0;
+
+        Map<Integer, Integer> originMap = new HashMap<>();
+        Map<Integer, Integer> pointerMap = new HashMap<>();
+
+        for (int item : topping) {
+            originMap.put(item, originMap.getOrDefault(item, 0) + 1);
+        }
+
+        int originCount = originMap.size();
+        for (int i = 0; i < topping.length; i++) {
+            int item = topping[i];
+            pointerMap.put(item, pointerMap.getOrDefault(item, 0) + 1);
+            originMap.put(item, originMap.get(item) - 1);
+
+            if (originMap.get(item) == 0) originCount--;
+            if (pointerMap.size() == originCount) answer++;
+        }
+
+        //then
+        assertThat(answer).isEqualTo(result);
+    }
+
+    static Stream<Arguments> 롤케이크_자르기_데이터() {
+        return Stream.of(
+                Arguments.of(new int[] {1, 2, 1, 3, 1, 4, 1, 2}, 2),
+                Arguments.of(new int[] {1, 2, 3, 1, 4}, 0)
+        );
+    }
+    
+    @ParameterizedTest
+    @MethodSource(value = "순위_검색_데이터")
+    void 순위_검색(String[] info, String[] query, int[] result) {
+        //when
+        int[] answer = new int[info.length];
+
+        List<Rank> rankList = new ArrayList<>();
+        for (String data : info) {
+            String[] splitData = data.split(" ");
+            rankList.add(new Rank(splitData[0], splitData[1], splitData[2], splitData[3], Integer.parseInt(splitData[4])));
+        }
+
+        for (int i = 0; i < query.length; i++) {
+            String q = query[i];
+            String[] splitQuery = q.split(" and ");
+            System.out.println(Arrays.toString(splitQuery));
+        }
+
+        //then
+        
+    }
+
+    static class Rank {
+        private String language;
+        private String group;
+        private String career;
+        private String soulFood;
+        private int score;
+
+        public Rank(String language, String group, String career, String soulFood, int score) {
+            this.language = language;
+            this.group = group;
+            this.career = career;
+            this.soulFood = soulFood;
+            this.score = score;
+        }
+
+        public String getLanguage() {
+            return language;
+        }
+
+        public String getGroup() {
+            return group;
+        }
+
+        public String getCareer() {
+            return career;
+        }
+
+        public String getSoulFood() {
+            return soulFood;
+        }
+
+        public int getScore() {
+            return score;
+        }
+    }
+
+    static Stream<Arguments> 순위_검색_데이터() {
+        return Stream.of(
+                Arguments.of(new String[]{"java backend junior pizza 150", "python frontend senior chicken 210", "python frontend senior chicken 150", "cpp backend senior pizza 260", "java backend junior chicken 80", "python backend senior chicken 50"},
+                        new String[]{"java and backend and junior and pizza 100", "python and frontend and senior and chicken 200", "cpp and - and senior and pizza 250", "- and backend and senior and - 150", "- and - and - and chicken 100", "- and - and - and - 150"},
+                        new int[]{1, 1, 1, 1, 2, 4})
+        );
+    }
+    
+    @ParameterizedTest
+    @MethodSource(value = "지하철_최소환승_데이터")
+    void 지하철_최소환승() {
+        //when
+
+
+        //then
+        
+    }
 }
+
+/*
+SELECT b.ID, b.NAME, COUNT(s.car_id), COUNT(e.id)
+FROM EMPLOYEES e, BRANCHES b, SELLINGS s
+WHERE e.ID = s.EMPLOYEE_ID
+AND e.BRANCH_ID = b.ID
+AND s.CAR_ID = 306
+GROUP BY (b.ID, b.NAME);
+*/
