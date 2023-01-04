@@ -1,4 +1,4 @@
-package lecture.nadongbin.search;
+package lecture.nadongbin.search.problem;
 
 import java.util.LinkedList;
 import java.util.Queue;
