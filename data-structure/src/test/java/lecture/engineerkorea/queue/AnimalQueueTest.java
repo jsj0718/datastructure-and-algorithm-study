@@ -1,13 +1,11 @@
-package lecture.engineerkorea.stackandqueue;
+package lecture.engineerkorea.queue;
 
-import lecture.engineerkorea.stackandqueue.AnimalQueue.AnimalShelter;
-import lecture.engineerkorea.stackandqueue.AnimalQueue.Cat;
-import lecture.engineerkorea.stackandqueue.AnimalQueue.Dog;
-import org.assertj.core.api.Assertions;
+import lecture.engineerkorea.queue.AnimalQueue.AnimalShelter;
+import lecture.engineerkorea.queue.AnimalQueue.Cat;
+import lecture.engineerkorea.queue.AnimalQueue.Dog;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
 
 class AnimalQueueTest {
 

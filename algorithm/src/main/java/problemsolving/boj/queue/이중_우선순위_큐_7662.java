@@ -5,7 +5,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.*;
 
-public class Problem7662 {
+public class 이중_우선순위_큐_7662 {
     public static StringBuilder sb = new StringBuilder();
 
     public static void main(String[] args) throws IOException {

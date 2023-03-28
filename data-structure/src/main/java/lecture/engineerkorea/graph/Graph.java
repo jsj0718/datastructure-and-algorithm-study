@@ -1,6 +1,6 @@
-package lecture.engineerkorea.tree;
+package lecture.engineerkorea.graph;
 
-import lecture.engineerkorea.stackandqueue.Queue;
+import lecture.engineerkorea.queue.Queue;
 
 import java.util.LinkedList;
 import java.util.Stack;

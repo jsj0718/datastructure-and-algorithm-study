@@ -1,6 +1,6 @@
-package lecture.engineerkorea.stackandqueue;
+package lecture.engineerkorea.queue;
 
-import org.assertj.core.api.Assertions;
+import lecture.engineerkorea.queue.MyQueue;
 import org.junit.jupiter.api.Test;
 
 import java.util.NoSuchElementException;

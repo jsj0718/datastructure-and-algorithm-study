@@ -1,6 +1,6 @@
 package problemsolving.boj.recursion;
 
-public class Problem10870 {
+public class 피보나치5_10870 {
     public static void main(String[] args) {
         System.out.println(fibo(10));
     }

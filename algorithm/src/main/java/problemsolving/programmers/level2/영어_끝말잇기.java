@@ -1,4 +1,4 @@
-package programmers.level2;
+package problemsolving.programmers.level2;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,4 +1,4 @@
-package lecture.engineerkorea.stackandqueue;
+package lecture.engineerkorea.stack;
 
 import java.util.EmptyStackException;
 

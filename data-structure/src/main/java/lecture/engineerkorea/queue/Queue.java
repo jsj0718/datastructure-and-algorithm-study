@@ -1,4 +1,4 @@
-package lecture.engineerkorea.stackandqueue;
+package lecture.engineerkorea.queue;
 
 import java.util.NoSuchElementException;
 

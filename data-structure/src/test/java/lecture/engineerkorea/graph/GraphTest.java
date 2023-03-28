@@ -1,6 +1,6 @@
-package lecture.engineerkorea.tree;
+package lecture.engineerkorea.graph;
 
-import org.assertj.core.api.Assertions;
+import lecture.engineerkorea.graph.Graph;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
