@@ -1,15 +1,16 @@
-package problemsolving.boj.template;
+
+package problemsolving.boj.sort;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.util.*;
 import java.util.stream.Collectors;
 
-public class Main {
+public class 좌표압축_18870 {
     private static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
     public static void main(String[] args) throws Exception {
-        new Main().solution();
+        new 좌표압축_18870().solution();
     }
 
     private void solution() throws Exception {
