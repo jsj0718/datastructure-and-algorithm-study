@@ -1,6 +1,6 @@
-package problemsolving.leetcode.template;
+package problemsolving.leetcode.dp;
 
-public class Solution {
+public class SubArrayOddSumCount_1524 {
     //시간 초과 -> O(n)으로 하는 방법 고려
     public int numOfSubarrays(int[] arr) {
         int count = 0;
@@ -34,6 +34,6 @@ public class Solution {
     }
 
     public static void main(String[] args) {
-        System.out.println(new Solution().numOfSubarrays(new int[] {1,2,3,4,5,6,7}));
+        System.out.println(new SubArrayOddSumCount_1524().numOfSubarrays(new int[] {1,2,3,4,5,6,7}));
     }
 }

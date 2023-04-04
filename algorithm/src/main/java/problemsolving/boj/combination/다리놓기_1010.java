@@ -1,14 +1,14 @@
-package problemsolving.boj.template;
+package problemsolving.boj.combination;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.util.StringTokenizer;
 
-public class Main {
+public class 다리놓기_1010 {
     private static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
     public static void main(String[] args) throws Exception {
-        new Main().solution();
+        new 다리놓기_1010().solution();
     }
 
     private void solution() throws Exception {
