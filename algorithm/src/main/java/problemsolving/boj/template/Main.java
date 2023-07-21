@@ -2,6 +2,7 @@ package problemsolving.boj.template;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
+import java.util.Stack;
 import java.util.StringTokenizer;
 
 public class Main {
@@ -12,28 +13,31 @@ public class Main {
     }
 
     private void solution() throws Exception {
-        //param
-        StringTokenizer st = new StringTokenizer(br.readLine());
-        int t = Integer.parseInt(st.nextToken());
-        int[][] params = new int[t][2];
-        for (int i = 0; i < t; i++) {
-            st = new StringTokenizer(br.readLine());
-            params[i][0] = Integer.parseInt(st.nextToken());
-            params[i][1] = Integer.parseInt(st.nextToken());
+        int n = Integer.parseInt(new StringTokenizer(br.readLine()).nextToken());
+        int[] nums = new int[n];
+        for (int i = 0; i < n; i++) {
+            nums[i] = Integer.parseInt(new StringTokenizer(br.readLine()).nextToken());
         }
 
-        //logic
-        for (int i = 0; i < t; i++) {
-            long result = 1;
+        StringBuilder sb = new StringBuilder();
+        Stack<Integer> stack = new Stack<>();
+        int idx = 0;
 
-            int r = params[i][0];
-            int n = params[i][1];
-            for (int j = 1; j <= r; j++) {
-                result = result * (n - j + 1) / j;
+        for (int i = 1; i <= n; i++) {
+            sb.append("+").append("\n");
+            stack.push(i);
+            while (!stack.isEmpty() && stack.peek() >= nums[idx]) {
+                sb.append("-").append("\n");
+                if (stack.pop() == nums[idx]) {
+                    idx++;
+                }
             }
+        }
 
-            System.out.println(result);
-
+        if (idx == nums.length) {
+            System.out.println(sb);
+        } else {
+            System.out.println("NO");
         }
     }
 }
